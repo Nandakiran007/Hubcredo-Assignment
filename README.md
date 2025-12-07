@@ -13,5 +13,5 @@ See individual READMEs in each folder for start instructions. Basic steps:
 
 Defaults:
 
--   Backend: `http://localhost:5000`
+-   Backend: `https://hubcredo-assignment-amber.vercel.app/`
 -   Frontend (Vite): `http://localhost:5173`
