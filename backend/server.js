@@ -6,16 +6,7 @@ const cors = require("cors");
 const app = express();
 
 const PORT = process.env.PORT || 5000;
-app.use(
-    cors({
-        origin: [
-      "https://hubcredo-assignment-k91i.vercel.app", 
-      "http://localhost:5173"                        
-    ],
-        credentials: true,
-        methods: ["GET", "POST", "PUT", "DELETE"],
-    })
-);
+app.use(cors());
 
 app.use(express.json());
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate,Link } from "react-router-dom";
-
+const BACKEND_URL=import.meta.env.VITE_API_URL||"https://localhost:5000"
 export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -12,7 +12,7 @@ export default function Login() {
         setError("");
         try {
             const res = await fetch(
-                "https://hubcredo-assignment-amber.vercel.app/api/auth/login",
+                `${BACKEND_URL}/api/auth/login`,
                 {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },

@@ -22,23 +22,25 @@ router.post("/signup", async (req, res) => {
         await user.save();
 
         try {
-            await axios.post(
-                "https://n8n-workflow-7d3h.run/api/v1/webhook/new_user_signup",
+            await fetch(
+                "https://nandakiran.app.n8n.cloud/webhook/email_trigger",
                 {
-                    name: username,
-                    email,
-                    message: `Welcome ${username}! You have successfully signed up.`,
-                    time: new Date().toISOString(),
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ email }),
                 }
             );
+
             console.log("Webhook triggered successfully");
         } catch (webhookErr) {
-            console.error("Webhook Failed:", webhookErr.message); 
+            console.error("Webhook Failed:", webhookErr.message);
         }
 
         const token = jwt.sign(
             { id: user._id, username: user.username },
-            process.env.JWT_SECRET||"dummy_secret",
+            process.env.JWT_SECRET || "dummy_secret",
             { expiresIn: "7d" }
         );
         res.json({
@@ -68,7 +70,7 @@ router.post("/login", async (req, res) => {
 
         const token = jwt.sign(
             { id: user._id, username: user.username },
-            process.env.JWT_SECRET||"dummy_secret",
+            process.env.JWT_SECRET || "dummy_secret",
             { expiresIn: "7d" }
         );
         res.json({

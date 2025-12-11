@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate,Link } from "react-router-dom";
+const BACKEND_URL = import.meta.env.VITE_API_URL || "https://localhost:5000";
 
 export default function Signup() {
     const [username, setUsername] = useState("");
@@ -12,14 +13,11 @@ export default function Signup() {
         e.preventDefault();
         setError("");
         try {
-            const res = await fetch(
-                "https://hubcredo-assignment-amber.vercel.app/api/auth/signup",
-                {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ username, email, password }),
-                }
-            );
+            const res = await fetch(`${BACKEND_URL}/api/auth/signup`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username, email, password }),
+            });
             const data = await res.json();
             if (!res.ok) throw new Error(data.message || "Signup failed");
             localStorage.setItem("token", data.token);
