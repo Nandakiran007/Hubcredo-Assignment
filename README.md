@@ -16,5 +16,5 @@ Defaults:
 -   Backend: `https://hubcredo-assignment-amber.vercel.app/`
 -   Frontend (Vite): `http://localhost:5173`
   
-Post Email will directly be addded into google sheet  
+Post Singup the email will directly be addded into google sheet  
 Google Sheet Link- `https://docs.google.com/spreadsheets/d/1AIjUWAq_Pbup_ECDxyqA-7zydDQ2CVFaJ9gtMLNQxs0/edit?usp=sharing`
